@@ -2,8 +2,8 @@
 
 void Main()
 {
-	string filePath = @"e:\source";
-	string filePathDestination = @"E:\destination";
+	string filePath = @"E:\Pixel\Pictures\Raw";
+	string filePathDestination = @"E:\__BACKUP__\Photos";
 
 	String[] files = System.IO.Directory.GetFiles(filePath, "*", SearchOption.AllDirectories);
 	
@@ -19,7 +19,13 @@ void Main()
 
 		String destination = di.FullName + "\\" + fileInfo.Name;
 		
-		File.Copy(file, destination);
-		
+		try
+		{
+			File.Copy(file, destination, true);	
+		}
+		catch (Exception ex)
+		{
+			Console.Out.Write(ex);
+		}	
 	}
 }
